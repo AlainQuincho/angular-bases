@@ -1,0 +1,49 @@
+<div class="card mt-2">
+  <div class="card-header">
+    Resultados
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <p>Capital</p>
+        <p><b>s/. {{capitalTotal}}</b></p>
+      </div>
+      <div class="col">
+        <p>Interes</p>
+        <p><b>s/. {{interesTotal}}</b></p>
+      </div>
+      <div class="col">
+        <p>Cuota normal</p>
+        <p><b>s/. {{cuotaNormal}}</b></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-2">
+  <div class="card-header">
+    Cronograma de pagos
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fecha pago</th>
+          <th scope="col">Capital</th>
+          <th scope="col">Interes</th>
+          <th scope="col">Cuota</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cuota of ppg">
+          <th scope="row">{{cuota.cuota}}</th>
+          <td>{{cuota.fechaCuota | date: 'dd/MM/yyyy'}}</td>
+          <td>{{cuota.capital | number: '1.2-2'}}</td>
+          <td>{{cuota.interes}}</td>
+          <td>{{cuota.total}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

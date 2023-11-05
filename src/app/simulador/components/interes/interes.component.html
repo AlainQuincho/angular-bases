@@ -1,0 +1,60 @@
+<h4>CrediMás Soluciones - Calculadora de interes</h4>
+<hr>
+
+<div class="card">
+  <div class="card-body">
+    <form class="form-group" (ngSubmit)="emitSimular()">
+      <div class="form-row mb-2">
+        <div class="form-group col-md-4">
+          <label>Capital</label>
+          <input [(ngModel)]="credito.capital" name="capital" class="form-control text-right" type="number"
+            placeholder="Capital desembolso">
+        </div>
+      </div>
+      <div class="form-row mb-2">
+        <div class="form-group col-md-4">
+          <label>Fecha desembolso</label>
+          <input [(ngModel)]="credito.fechaDesembolso" name="fechaDesembolso" class="form-control" type="date"
+            placeholder="Fecha desembolso">
+        </div>
+      </div>
+      <div class="form-row mb-2">
+        <div class="form-group col-md-4">
+          <label>Número de cuotas</label>
+          <input [(ngModel)]="credito.numeroCuotas" name="numeroCuotas" class="form-control tex-right" type="number"
+            placeholder="Número de cuotas">
+        </div>
+      </div>
+      <div class="form-row mb-2">
+        <div class="form-group col-md-4">
+          <label>Periodo</label>
+          <select class="form-control" type="number">
+            <option selected>Seleccione...</option>
+            <option>Diario</option>
+            <option>Semanal</option>
+            <option>Quincenal</option>
+            <option>Mensual</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row mb-2">
+        <div class="form-group col-md-4">
+          <label>Tasa de interés (%)</label>
+          <input [(ngModel)]="credito.tasaInteres" name="tasaInteres" class="form-control tex-right" type="number"
+            placeholder="Tasa de interés">
+        </div>
+      </div>
+      <div class="form-row mb-2">
+        <div class="form-group col-md-4">
+          <label>Dias de gracia</label>
+          <input [(ngModel)]="credito.diasGracia" name="diasGracia" class="form-control tex-right" type="number"
+            placeholder="Dias de gracia">
+        </div>
+      </div>
+      <div class="btn-goup" role="group">
+        <button class="btn btn-danger" type="submit">Simular</button>
+        <button class="btn btn-secondary mx-2">Limpiar</button>
+      </div>
+    </form>
+  </div>
+</div>
