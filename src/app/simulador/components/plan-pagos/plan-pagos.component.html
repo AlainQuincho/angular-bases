@@ -6,15 +6,15 @@
     <div class="row">
       <div class="col">
         <p>Capital</p>
-        <p><b>s/. {{capitalTotal}}</b></p>
+        <p><b>s/. {{capitalTotal | number: '1.2-2'}}</b></p>
       </div>
       <div class="col">
         <p>Interes</p>
-        <p><b>s/. {{interesTotal}}</b></p>
+        <p><b>s/. {{interesTotal | number: '1.2-2'}}</b></p>
       </div>
       <div class="col">
         <p>Cuota normal</p>
-        <p><b>s/. {{cuotaNormal}}</b></p>
+        <p><b>s/. {{cuotaNormal | number: '1.2-2'}}</b></p>
       </div>
     </div>
   </div>
@@ -40,8 +40,8 @@
           <th scope="row">{{cuota.cuota}}</th>
           <td>{{cuota.fechaCuota | date: 'dd/MM/yyyy'}}</td>
           <td>{{cuota.capital | number: '1.2-2'}}</td>
-          <td>{{cuota.interes}}</td>
-          <td>{{cuota.total}}</td>
+          <td>{{cuota.interes | number: '1.2-2'}}</td>
+          <td>{{cuota.total | number: '1.2-2'}}</td>
         </tr>
       </tbody>
     </table>

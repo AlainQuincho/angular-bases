@@ -20,46 +20,49 @@ export class SimuladorService {
 
   simularPpg(dato: Credito): void {
     console.log('Iniciando simulación');
-    console.log(this.creditoSimulado.fechaDesembolso);
 
-    this.creditoSimulado.interes = Math.round(dato.tasaInteres / 100.00 * dato.capital);
+    debugger;
+
+    this.creditoSimulado.interes = parseFloat((dato.tasaInteres / 100.00 * dato.capital).toFixed(1));
+    this.creditoSimulado.capital = parseFloat(dato.capital.toFixed(2));
+    dato.interes = parseFloat(this.creditoSimulado.interes.toFixed(2));
 
     this.creditoSimulado.planPagos = [];
 
-    const capitalCuota = Math.round(dato.capital / dato.numeroCuotas);
-    const interesCuota = Math.round(dato.interes / dato.numeroCuotas)
+    const capitalCuota: number = parseFloat((dato.capital / dato.numeroCuotas).toFixed(2));
+    const interesCuota = parseFloat((dato.interes / dato.numeroCuotas).toFixed(2));
+    const cuotaNormal = parseFloat((capitalCuota +  interesCuota).toFixed(1));
+    const fechaInicio = this.sumarDias(dato.fechaDesembolso, 1);
 
     let capitalAcumulado: number = 0;
     let InteresAcumulado: number = 0;
 
-    let fecha: Date = dato.fechaDesembolso;
-
     for (let i = 1; i <= dato.numeroCuotas; i++) {
-      let cuota =  {
+      let nuevaCuota =  {
         cuota : i,
-        fechaCuota :  this.sumarDias(fecha, i),
+        fechaCuota :  this.sumarDias(fechaInicio, i),
         capital : capitalCuota,
-        interes : interesCuota,
-        total : capitalCuota + interesCuota,
+        interes : parseFloat((cuotaNormal - capitalCuota).toFixed(2)),
+        total : cuotaNormal,
       }
 
-      if (i === 1){ // primera cuota
-        cuota.fechaCuota = dato.fechaDesembolso;
+      if( i=== 1){ // primera cuota
+        nuevaCuota.fechaCuota = this.sumarDias(fechaInicio, i);
       }else if (i === dato.numeroCuotas){ // ultima cuota
-        cuota.capital = this.creditoSimulado.capital - capitalAcumulado;
-        cuota.interes = this.creditoSimulado.interes - InteresAcumulado;
+
+        nuevaCuota.fechaCuota = this.sumarDias(fechaInicio, i);
+
+        // Ajuste en la primera cuota
+        this.creditoSimulado.planPagos[0].capital = parseFloat((dato.capital - capitalAcumulado).toFixed(2));
+        this.creditoSimulado.planPagos[0].interes = parseFloat((dato.interes - InteresAcumulado).toFixed(2));
+        this.creditoSimulado.planPagos[0].total = parseFloat((this.creditoSimulado.planPagos[0].capital + this.creditoSimulado.planPagos[0].interes).toFixed(1));
       }
 
-      capitalAcumulado += cuota.capital;
-      InteresAcumulado += cuota.interes;
-      fecha = cuota.fechaCuota;
+      capitalAcumulado += nuevaCuota.capital;
+      InteresAcumulado += nuevaCuota.interes;
 
-      console.log(cuota);
-
-      this.creditoSimulado.planPagos.push(cuota);
+      this.creditoSimulado.planPagos.push(nuevaCuota);
     }
-
-    console.log(this.creditoSimulado);
   }
 
   limpiarPpg(): void {
@@ -78,7 +81,8 @@ export class SimuladorService {
   }
 
   sumarDias(fecha: Date, dias: number){
-    fecha.setDate(fecha.getDate() + dias);
-    return fecha;
+    let fechaNueva = new Date(fecha);
+    fechaNueva.setDate(fechaNueva.getDate() + dias);
+    return fechaNueva;
   }
 }

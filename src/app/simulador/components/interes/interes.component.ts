@@ -27,7 +27,8 @@ export class InteresComponent {
   };
 
   emitSimular(): void {
-    this.credito.fechaDesembolso = new Date('2023-11-04');
+    debugger;
+    //this.credito.fechaDesembolso = new Date(this.credito.fechaDesembolso.getDate());
     this.onNewSimulacion.emit(this.credito);
   }
 }

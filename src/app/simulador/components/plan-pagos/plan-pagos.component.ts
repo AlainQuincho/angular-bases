@@ -14,7 +14,7 @@ PlanPagosComponent {
   get capitalTotal(): number{
     let sumaCapital:number = 0;
 
-    this.ppg.forEach((cuota) => { sumaCapital += cuota.total });
+    this.ppg.forEach((cuota) => { sumaCapital += cuota.capital });
 
     return sumaCapital;
   }
@@ -26,11 +26,9 @@ PlanPagosComponent {
     return sumaInteres;
   }
   get cuotaNormal(): number {
-    // let numeroCuotas = this.ppg!.length;
-    // let cuota = this.ppg[numeroCuotas - 1];
-    // return cuota.capital || 0;
-
-    return 0;
+    let numeroCuotas = this.ppg!.length;
+    let cuota = this.ppg[numeroCuotas - 1];
+    return parseFloat((cuota.capital + cuota.interes).toFixed(2)) || 0;
   }
 
 }
