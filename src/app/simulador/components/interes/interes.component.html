@@ -28,12 +28,12 @@
       <div class="form-row mb-2">
         <div class="form-group col-md-4">
           <label>Periodo</label>
-          <select class="form-control" type="number">
-            <option selected>Seleccione...</option>
-            <option>Diario</option>
-            <option>Semanal</option>
-            <option>Quincenal</option>
-            <option>Mensual</option>
+          <select (change)="cambioValor($event)" class="form-control">
+            <option selected value="0">Seleccione...</option>
+            <option value="1">Diario</option>
+            <option value="2">Semanal</option>
+            <option value="3">Quincenal</option>
+            <option value="4">Mensual</option>
           </select>
         </div>
       </div>

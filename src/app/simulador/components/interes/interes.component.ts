@@ -18,7 +18,7 @@ export class InteresComponent {
     capital: 0,
     fechaDesembolso: new Date(),
     numeroCuotas: 0,
-    periodo: 0,
+    periodo: '',
     tasaInteres: 0,
     diasGracia: 0,
     interes: 0,
@@ -27,8 +27,14 @@ export class InteresComponent {
   };
 
   emitSimular(): void {
-    debugger;
-    //this.credito.fechaDesembolso = new Date(this.credito.fechaDesembolso.getDate());
     this.onNewSimulacion.emit(this.credito);
+
+    console.log(this.onNewSimulacion);
+  }
+
+  cambioValor(event: Event): void {
+    debugger;
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    this.credito.periodo = selectedValue;
   }
 }

@@ -4,7 +4,7 @@ export interface Credito {
   capital: number;
   fechaDesembolso: Date;
   numeroCuotas: number;
-  periodo: number;
+  periodo: string;
   tasaInteres: number;
   diasGracia: number;
   // resultados
