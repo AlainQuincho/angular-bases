@@ -3,6 +3,7 @@ import { SimuladorModule } from '../simulador.module';
 import { SimuladorService } from '../services/simulador.service';
 import { Credito } from '../interfaces/credito.interface';
 import { CuotaCredito } from '../interfaces/cuota.interface';
+import { DenominacionMoneda } from '../interfaces/denominacionMoneda.interface';
 
 @Component({
   selector: 'app-sim-main-page',

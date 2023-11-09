@@ -26,9 +26,10 @@ PlanPagosComponent {
     return sumaInteres;
   }
   get cuotaNormal(): number {
-    let numeroCuotas = this.ppg!.length;
-    let cuota = this.ppg[numeroCuotas - 1];
-    return parseFloat((cuota.capital + cuota.interes).toFixed(2)) || 0;
+    // let numeroCuotas = this.ppg!.length;
+    // let cuota = this.ppg[numeroCuotas - 1];
+    // return parseFloat((cuota.capital + cuota.interes).toFixed(2)) || 0;
+    return 0;
   }
 
 }

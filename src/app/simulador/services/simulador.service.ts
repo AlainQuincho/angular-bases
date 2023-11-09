@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Credito } from '../interfaces/credito.interface';
 import { CuotaCredito } from '../interfaces/cuota.interface';
+import { DenominacionMoneda } from '../interfaces/denominacionMoneda.interface';
 
 @Injectable({ providedIn: 'root' })
 export class SimuladorService {
@@ -98,4 +99,5 @@ export class SimuladorService {
     fechaNueva.setDate(fechaNueva.getDate() + dias);
     return fechaNueva;
   }
+
 }
