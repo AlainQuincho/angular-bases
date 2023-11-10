@@ -6,13 +6,13 @@ import { CuotaCredito } from '../../interfaces/cuota.interface';
   templateUrl: './plan-pagos.component.html'
 })
 export class
-PlanPagosComponent {
+  PlanPagosComponent {
 
   @Input()
   public ppg: CuotaCredito[] = [];
 
-  get capitalTotal(): number{
-    let sumaCapital:number = 0;
+  get capitalTotal(): number {
+    let sumaCapital: number = 0;
 
     this.ppg.forEach((cuota) => { sumaCapital += cuota.capital });
 
@@ -26,9 +26,15 @@ PlanPagosComponent {
     return sumaInteres;
   }
   get cuotaNormal(): number {
-    // let numeroCuotas = this.ppg!.length;
-    // let cuota = this.ppg[numeroCuotas - 1];
-    // return parseFloat((cuota.capital + cuota.interes).toFixed(2)) || 0;
+    let numeroCuotas = this.ppg.length;
+
+    if (numeroCuotas > 0) {
+      let cuota = this.ppg[numeroCuotas - 1];
+      if (cuota) {
+        return parseFloat((cuota.capital + cuota.interes).toFixed(2));
+      }
+    }
+
     return 0;
   }
 
