@@ -11,8 +11,11 @@ import { DenominacionMoneda } from '../interfaces/denominacionMoneda.interface';
 })
 
 export class MainPageComponent {
-  constructor(private simuladorService:SimuladorService) {
 
+  public operacion:string;
+
+  constructor(private simuladorService:SimuladorService) {
+    this.operacion = "1";
   }
 
   get ppg(): CuotaCredito[]{
@@ -22,4 +25,5 @@ export class MainPageComponent {
   onSimular(dato: Credito): void {
     this.simuladorService.simularPpg(dato);
   }
+
 }

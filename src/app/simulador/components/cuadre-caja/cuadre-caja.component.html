@@ -1,7 +1,7 @@
 <h4>CrediMás Soluciones - Cuadre caja</h4>
 <hr>
-<div class="row">
-  <table class="table table-striped">
+<div class="container mt-4">
+  <table class="table table-bordered table-striped table-fixed">
     <thead>
       <tr>
         <th scope="col">Denominación</th>
@@ -12,14 +12,16 @@
     <tbody>
       <tr *ngFor="let denom of dineroCaja">
         <td style="text-align: right; vertical-align: middle;">{{denom.denominacion}}</td>
-        <td><input
+        <td>
+          <input
             type="number"
             [(ngModel)]="denom.cantidad"
             class="form-control"
             name="cantidad"
-            style="text-align: right;"
+            style="text-align: right; width: 150px;"
             (input)="calcularTotal()"
-            > </td>
+            >
+          </td>
         <td style="text-align: right; vertical-align: middle;">{{denom.total | number:'1.2-2'}}</td>
       </tr>
     </tbody>
@@ -27,11 +29,11 @@
 
   <div class="row">
     <div class="col">
-      <p>Monedas</p>
+      <p>Cantidad monedas</p>
       <p><b>{{cantidadMonedas | number: '1.2-2'}}</b></p>
     </div>
     <div class="col">
-      <p>Total</p>
+      <p>Total caja</p>
       <p><b>s/. {{totalCaja | number: '1.2-2'}}</b></p>
     </div>
   </div>

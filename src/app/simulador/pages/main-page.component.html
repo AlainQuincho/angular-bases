@@ -1,10 +1,31 @@
-<sim-interes-credito
-  (onNewSimulacion)="onSimular($event)"
-></sim-interes-credito>
-<sim-plan-pagos
-  [ppg]="ppg"
-></sim-plan-pagos>
+<div class="row">
+  <div class="col">
+    <div class="form-check">
+      <input [(ngModel)]="operacion" class="form-check-input" type="radio" name="flexRadioDefault"
+        id="flexRadioDefault1" value="1">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Simulador de crédito
+      </label>
+    </div>
+  </div>
+  <div class="col">
+    <div class="form-check">
+      <input [(ngModel)]="operacion" class="form-check-input" type="radio" name="flexRadioDefault"
+        id="flexRadioDefault2" value="2">
+      <label class="form-check-label" for="flexRadioDefault2">
+        Arqueo de caja
+      </label>
+    </div>
+  </div>
+</div>
 
 <br>
 
-<app-cuadre-caja></app-cuadre-caja>
+<div *ngIf="operacion === '1'">
+  <sim-interes-credito (onNewSimulacion)="onSimular($event)"></sim-interes-credito>
+  <sim-plan-pagos [ppg]="ppg"></sim-plan-pagos>
+</div>
+
+<div *ngIf="operacion === '2'">
+  <app-cuadre-caja></app-cuadre-caja>
+</div>
