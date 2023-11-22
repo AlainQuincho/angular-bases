@@ -13,7 +13,7 @@ export class CuadreCajaComponent {
     { denominacion : 's/. 50.00', valor : 50.00, cantidad : 0, get total() {return this.valor * this.cantidad}},
     { denominacion : 's/. 20.00', valor : 20.00, cantidad : 0, get total() {return this.valor * this.cantidad}},
     { denominacion : 's/. 10.00', valor : 10.00, cantidad : 0, get total() {return this.valor * this.cantidad}},
-    { denominacion : 's/. 5.00', valor : 50.00, cantidad : 0, get total() {return this.valor * this.cantidad}},
+    { denominacion : 's/. 5.00', valor : 5.00, cantidad : 0, get total() {return this.valor * this.cantidad}},
     { denominacion : 's/. 2.00', valor : 2.00, cantidad : 0, get total() {return this.valor * this.cantidad}},
     { denominacion : 's/. 1.00', valor : 1.00, cantidad : 0, get total() {return this.valor * this.cantidad}},
     { denominacion : 's/. 0.50', valor : 0.50, cantidad : 0, get total() {return this.valor * this.cantidad}},
